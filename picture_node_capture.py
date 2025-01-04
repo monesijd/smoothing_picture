@@ -38,8 +38,8 @@ class picture:
     def __init__(self, image):
         self.image = cv2.imread(image)
         self.gray = cv2.cvtColor(self.image, cv2.COLOR_RGB2GRAY)
-        threshold = 30
-        self.edge = cv2.Canny(self.gray, threshold, 6*threshold)
+        threshold = 100
+        self.edge = cv2.Canny(self.gray, threshold, 4*threshold)
         self.height, self.width, _ = tuple(self.image.shape)
 
 
