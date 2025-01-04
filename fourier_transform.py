@@ -34,17 +34,13 @@ def fourier_transform(order_list, num_of_point):
 
 input_picture = capture.picture("test.png")
 
-num_of_point = 12000
+num_of_point = 10000
 order_list = input_picture.order_list(num_of_point) 
 point_list = fourier_transform(order_list, num_of_point)
 
 plt.plot(point_list.real, point_list.imag)
 plt.axis("equal")
 plt.show()
-
-
-# input_picture.draw_points()
-# cv2.imshow("edge", input_picture.edge)
 
 cv2.waitKey(0)
 cv2.destroyAllWindows()
