@@ -41,6 +41,3 @@ point_list = fourier_transform(order_list, num_of_point)
 plt.plot(point_list.real, point_list.imag)
 plt.axis("equal")
 plt.show()
-
-cv2.waitKey(0)
-cv2.destroyAllWindows()
