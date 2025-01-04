@@ -17,3 +17,14 @@ I do the follow steps to make it:
 - numpy
 
 - fourier series
+
+
+### Result
+
+- Origin
+  
+![geto](https://github.com/user-attachments/assets/73d23d05-6cf1-4ee9-98db-eb8f318c8528)
+
+- Result
+  
+![geto](https://github.com/user-attachments/assets/6c76043d-2ab7-42f4-b430-1aa11b5160ce)
