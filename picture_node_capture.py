@@ -34,16 +34,15 @@ def move_to_origin_point(order_list):
     return order_list
 
 
-class picture:
-    def __init__(self, image):
+class Picture:
+    def __init__(self, image, threshold_low, threshold_high):
         self.image = cv2.imread(image)
         self.gray = cv2.cvtColor(self.image, cv2.COLOR_RGB2GRAY)
-        threshold = 100
-        self.edge = cv2.Canny(self.gray, threshold, 4*threshold)
+        self.edge = cv2.Canny(self.gray, threshold_high, threshold_high)
         self.height, self.width, _ = tuple(self.image.shape)
 
 
-    def order_list(self, num_of_point):
+    def order_list(self):
         point = []
         num = 0
 
@@ -54,9 +53,7 @@ class picture:
                     num += 1
         point = np.array(point)
 
-        N = max(num//num_of_point, 1)
-        reduced_point = point[::N]
-        self.order_list = dfs_drawing(reduced_point)
+        self.order_list = dfs_drawing(point)
         self.order_list = move_to_origin_point(self.order_list)
 
         return self.order_list

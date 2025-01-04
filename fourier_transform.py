@@ -3,12 +3,10 @@ import numpy as np
 import matplotlib.pyplot as plt
 import picture_node_capture as capture
 
-def fourier_transform(order_list, num_of_point):
+def fourier_transform(order_list):
     pi = np.pi
     
-    if len(order_list) != num_of_point:
-        indices = np.linspace(0, len(order_list)-1, num_of_point, dtype=int)
-        order_list = order_list[indices]
+    num_of_point = len(order_list)
     
     t_list = np.linspace(0, 1, num_of_point)
     dt = 1 / num_of_point
@@ -32,11 +30,11 @@ def fourier_transform(order_list, num_of_point):
     return point_list 
 
 
-input_picture = capture.picture("picture_dir/test.jpg")
+input_picture = capture.Picture("picture_dir/test.jpg", threshold_low=80, threshold_high=200)
+# 想要測試的可以在 picture_dir 中放檔案試試
 
-num_of_point = 10000
-order_list = input_picture.order_list(num_of_point) 
-point_list = fourier_transform(order_list, num_of_point)
+order_list = input_picture.order_list() 
+point_list = fourier_transform(order_list)
 
 plt.plot(point_list.real, point_list.imag)
 plt.axis("equal")
