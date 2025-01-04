@@ -1,16 +1,50 @@
+import cv2
+import numpy as np
 import matplotlib.pyplot as plt
 import picture_node_capture as capture
 
-input_picture = capture.picture("test.jpg")
-height = input_picture.height
-width = input_picture.width
+def fourier_transform(order_list, num_of_point):
+    pi = np.pi
+    
+    if len(order_list) != num_of_point:
+        indices = np.linspace(0, len(order_list)-1, num_of_point, dtype=int)
+        order_list = order_list[indices]
+    
+    t_list = np.linspace(0, 1, num_of_point)
+    dt = 1 / num_of_point
+    
+    coef_list = []
+    num_of_coef = num_of_point
 
-order_list = input_picture.order_list(5000) 
-# 將圖像變成 3000 個點來表示
+    # 利用黎曼和計算傅立葉級數的係數
+    for n in range(num_of_coef):
+        coordinate = np.array(order_list[:, 0] + 1j * order_list[:, 1])
+        coef = np.sum(coordinate * (np.exp((1j)*(-2*pi*n*t_list)) * dt))
+        coef_list.append(coef)
+    
 
-input_picture.draw_nodes()
+    coef_list = np.array(coef_list)
+    point_list = np.zeros(len(t_list), dtype=complex)
+
+    for n in range(num_of_coef):
+        point_list += coef_list[n] * np.exp((1j) * (2*pi*n*t_list))
+
+    return point_list 
 
 
-while True:
-    if input_picture.close_window():
-        break
+input_picture = capture.picture("test.png")
+
+num_of_point = 12000
+order_list = input_picture.order_list(num_of_point) 
+point_list = fourier_transform(order_list, num_of_point)
+
+plt.plot(point_list.real, point_list.imag)
+plt.axis("equal")
+plt.show()
+
+
+# input_picture.draw_points()
+# cv2.imshow("edge", input_picture.edge)
+
+cv2.waitKey(0)
+cv2.destroyAllWindows()
