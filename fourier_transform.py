@@ -32,7 +32,7 @@ def fourier_transform(order_list, num_of_point):
     return point_list 
 
 
-input_picture = capture.picture("test.png")
+input_picture = capture.picture("test.jpg")
 
 num_of_point = 10000
 order_list = input_picture.order_list(num_of_point) 
