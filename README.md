@@ -44,9 +44,9 @@ We can approximate any periodic function as an infinite sum of complex exponenti
 
 Here is the formula:
 
-$$ f(t) = C_0 e^{-0 \cdot (2\pi i t)} + C_1e^{-1 \cdot (2\pi i t)} + C_2 e^{-2 \cdot (2\pi i t)} +  C_3 e^{-3 \cdot (2\pi i t)} +... $$
+$$ f(t) = ... + C_{-1} e^{-(-1) \cdot (2\pi i t)} + C_0 e^{-0 \cdot (2\pi i t)} + C_1e^{-1 \cdot (2\pi i t)} + ... $$
 
-$$ f(t) = \sum_{i = 0}^n C_n \cdot e^{-n \cdot (2\pi i t)} $$
+$$ f(t) = \sum_{i = -\infty}^\infty C_n \cdot e^{-n \cdot (2\pi i t)} $$
 
 How can we find $C_n$ ?
 
