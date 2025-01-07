@@ -42,7 +42,7 @@ class Picture:
         self.height, self.width, _ = tuple(self.image.shape)
 
 
-    def order_list(self):
+    def order_list(self, num_of_point):
         point = []
         num = 0
 
@@ -52,6 +52,11 @@ class Picture:
                     point.append([i, -j])
                     num += 1
         point = np.array(point)
+        print(f"Original edge point: {num}")
+
+        num = max(num // num_of_point + 1, 1)
+        point = point[::num]
+        print(f"Input data point: {len(point)}")
 
         self.order_list = dfs_drawing(point)
         self.order_list = move_to_origin_point(self.order_list)
