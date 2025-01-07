@@ -29,7 +29,7 @@ def fourier_transform(order_list, num_of_coef):
     coef_list = np.array(coef_list)
     point_list = np.zeros(len(t_list2), dtype=complex)
 
-    for n in range(-num_of_coef//2+1, num_of_coef//2+1):
+    for n in range(-num_of_coef//2, num_of_coef//2+1):
         point_list += coef_list[n + num_of_coef//2] * np.exp((1j) * (2*pi*n*t_list2))
 
     return point_list 
