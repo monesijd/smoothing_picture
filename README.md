@@ -40,13 +40,13 @@ Fourier Series: [But what is a Fourier series? From heat flow to drawing with ci
 
 - Fourier series
 
-We can approximate any periodic function as an infinite sum of complex exponential functions.
+We can approximate any periodic function as an infinite sum of complex exponential functions ( ${\rm i} = \sqrt{-1}$ ).
 
 Here is the formula:
 
 $$ f(t) = ... + C_{-1} e^{-1 \cdot (2\pi i t)} + C_0 e^{0 \cdot (2\pi i t)} + C_1e^{1 \cdot (2\pi i t)} + ... $$
 
-$$ f(t) = \sum_{i = -\infty}^\infty C_n \cdot e^{n \cdot (2\pi i t)} $$
+$$ f(t) = \sum_{n = -\infty}^\infty C_n \cdot e^{n \cdot (2\pi i t)} $$
 
 How can we find $C_n$ ?
 
