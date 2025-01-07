@@ -5,7 +5,7 @@ import picture_node_capture as capture
 from matplotlib.animation import FuncAnimation
 
 
-def fourier_transform(order_list, num_of_coef):
+def fourier_series(order_list, num_of_coef):
     pi = np.pi
     
     num_of_point = len(order_list)
@@ -39,7 +39,7 @@ input_picture = capture.Picture("picture_dir/test.jpg", threshold_low=50, thresh
 # threshold_low 和 threshold_high 為偵測邊緣的閥值 ( 使用 cv2.edge )
 
 order_list = input_picture.order_list(num_of_point=20000)   
-point_list = fourier_transform(order_list, num_of_coef=len(order_list))
+point_list = fourier_series(order_list, num_of_coef=len(order_list))
 plt.plot(point_list.real, point_list.imag)
 plt.axis("equal")
 plt.show()
@@ -63,7 +63,7 @@ def init():
     return line,
 
 def update(num_of_coef):
-    point_list = fourier_transform(order_list, num_of_coef=num_of_coef)
+    point_list = fourier_series(order_list, num_of_coef=num_of_coef)
     line.set_data(point_list.real, point_list.imag)
     text.set_text(f'n = {num_of_coef}')
     return line,
