@@ -4,7 +4,7 @@ from scipy.spatial import KDTree
 import matplotlib.pyplot as plt
 
 
-def dfs_drawing(point):
+def min_dis_drawing(point):
     point = np.array(point)
     order_list = [] 
     
@@ -58,7 +58,7 @@ class Picture:
         point = point[::num]
         print(f"Input data point: {len(point)}")
 
-        self.order_list = dfs_drawing(point)
+        self.order_list = min_dis_drawing(point)
         self.order_list = move_to_origin_point(self.order_list)
 
         return self.order_list
